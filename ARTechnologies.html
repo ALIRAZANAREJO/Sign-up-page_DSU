@@ -1,0 +1,1571 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AR Technologies | Software Solutions</title>
+    <meta name="description" content="AR Technologies delivers professional web development, custom software, business websites, and modern digital solutions.">
+
+    <style>
+        /* =================================
+           1. GLOBAL STYLES
+        ================================= */
+
+        :root {
+            --navy: #101f38;
+            --navy-light: #192e4d;
+            --blue: #315f9e;
+            --silver: #dce3ec;
+            --light: #f5f7fa;
+            --white: #ffffff;
+            --text: #263449;
+            --muted: #748196;
+            --border: #e5eaf1;
+            --radius: 12px;
+            --shadow: 0 12px 35px rgba(16, 31, 56, .07);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: var(--white);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        button, a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .container {
+            width: min(1160px, 90%);
+            margin: auto;
+        }
+
+        .section {
+            padding: 90px 0;
+        }
+
+        .section-heading {
+            max-width: 650px;
+            margin: 0 auto 48px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            color: var(--blue);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-heading h2 {
+            margin: 12px 0;
+            color: var(--navy);
+            font-size: clamp(28px, 4vw, 40px);
+            line-height: 1.25;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        .btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 9px;
+            padding: 12px 21px;
+            border: 1px solid transparent;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+        .btn-primary {
+            background: var(--navy);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--blue);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border-color: #d4dce7;
+            color: var(--navy);
+            background: white;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--blue);
+            color: var(--blue);
+        }
+
+        /* =================================
+           2. NAVIGATION
+        ================================= */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, .96);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(14px);
+        }
+
+        .nav-inner {
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .brand-mark {
+            width: 43px;
+            height: 43px;
+            display: grid;
+            place-items: center;
+            border-radius: 9px;
+            background: var(--navy);
+            color: white;
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+        .brand-name {
+            color: var(--navy);
+            font-size: 16px;
+            font-weight: 800;
+            line-height: 1.3;
+            letter-spacing: .5px;
+        }
+
+        .brand-name small {
+            display: block;
+            margin-top: 4px;
+            color: var(--muted);
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 27px;
+        }
+
+        .nav-links a {
+            color: #536176;
+            font-size: 13px;
+            font-weight: 600;
+            transition: color .2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-name {
+            max-width: 125px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .logout-btn {
+            padding: 9px 13px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: white;
+            color: var(--navy);
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            border-color: #c44;
+            color: #c44;
+        }
+
+        .menu-toggle {
+            display: none;
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 6px;
+            padding: 8px 12px;
+            cursor: pointer;
+            color: var(--navy);
+        }
+
+        /* =================================
+           3. HERO SECTION
+        ================================= */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at 85% 25%, #dce7f5 0%, transparent 38%),
+                linear-gradient(120deg, #f8fafc 0%, #eef3f9 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-grid {
+            min-height: 545px;
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            align-items: center;
+            gap: 50px;
+            padding-top: 65px;
+            padding-bottom: 65px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .welcome-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+            padding: 7px 12px;
+            border: 1px solid #d7e0ed;
+            border-radius: 30px;
+            background: white;
+            color: var(--blue);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background: #39966a;
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            max-width: 620px;
+            color: var(--navy);
+            font-size: clamp(37px, 5.3vw, 61px);
+            font-weight: 800;
+            letter-spacing: -1.8px;
+            line-height: 1.12;
+        }
+
+        .hero h1 span {
+            color: var(--blue);
+        }
+
+        .hero-description {
+            max-width: 510px;
+            margin: 23px 0 29px;
+            color: #68768a;
+            font-size: 16px;
+            line-height: 1.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .hero-note {
+            margin-top: 25px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        /* CSS-built illustration */
+
+        .hero-art {
+            position: relative;
+            min-height: 360px;
+            display: grid;
+            place-items: center;
+        }
+
+        .art-circle {
+            position: absolute;
+            width: 310px;
+            height: 310px;
+            border: 1px solid #bdcce0;
+            border-radius: 50%;
+        }
+
+        .art-circle::before,
+        .art-circle::after {
+            content: "";
+            position: absolute;
+            inset: 27px;
+            border: 1px dashed #c7d4e5;
+            border-radius: 50%;
+        }
+
+        .art-circle::after {
+            inset: 57px;
+            border-style: solid;
+        }
+
+        .art-card {
+            position: relative;
+            z-index: 2;
+            width: min(340px, 100%);
+            padding: 27px;
+            border: 1px solid #ffffff;
+            border-radius: 13px;
+            background: rgba(255, 255, 255, .93);
+            box-shadow: 0 25px 65px rgba(27, 53, 86, .14);
+        }
+
+        .art-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .art-card-top strong {
+            color: var(--navy);
+            font-size: 13px;
+        }
+
+        .art-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .art-dots span {
+            width: 6px;
+            height: 6px;
+            background: #b6c5d9;
+            border-radius: 50%;
+        }
+
+        .art-icon {
+            width: 58px;
+            height: 58px;
+            display: grid;
+            place-items: center;
+            margin: 23px 0 14px;
+            border-radius: 11px;
+            background: var(--navy);
+            color: white;
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        .art-card h3 {
+            color: var(--navy);
+            font-size: 22px;
+        }
+
+        .art-card p {
+            margin-top: 7px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .code-lines {
+            display: grid;
+            gap: 8px;
+            margin-top: 24px;
+        }
+
+        .code-lines span {
+            display: block;
+            height: 6px;
+            border-radius: 5px;
+            background: #e8edf4;
+        }
+
+        .code-lines span:nth-child(1) {
+            width: 86%;
+            background: #c7d6e9;
+        }
+
+        .code-lines span:nth-child(2) {
+            width: 64%;
+        }
+
+        .code-lines span:nth-child(3) {
+            width: 76%;
+        }
+
+        .floating-tag {
+            position: absolute;
+            z-index: 3;
+            padding: 11px 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: white;
+            color: var(--navy);
+            box-shadow: var(--shadow);
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .tag-one {
+            top: 38px;
+            right: 0;
+        }
+
+        .tag-two {
+            bottom: 35px;
+            left: 0;
+        }
+
+        /* =================================
+           4. TRUST STRIP
+        ================================= */
+
+        .trust-strip {
+            padding: 25px 0;
+            background: white;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .trust-inner {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .trust-label {
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .trust-item {
+            color: #526177;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        /* =================================
+           5. SERVICES
+        ================================= */
+
+        .services {
+            background: white;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .service-card {
+            padding: 29px 25px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: white;
+            transition: .25s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #c5d4e7;
+            box-shadow: var(--shadow);
+        }
+
+        .service-icon {
+            width: 49px;
+            height: 49px;
+            display: grid;
+            place-items: center;
+            border-radius: 9px;
+            background: #edf2f8;
+            color: var(--navy);
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .service-card h3 {
+            margin: 21px 0 10px;
+            color: var(--navy);
+            font-size: 17px;
+        }
+
+        .service-card p {
+            min-height: 75px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .service-link {
+            display: inline-block;
+            margin-top: 17px;
+            color: var(--blue);
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        /* =================================
+           6. ABOUT SECTION
+        ================================= */
+
+        .about {
+            background: var(--light);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 65px;
+        }
+
+        .about-visual {
+            min-height: 335px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 36px;
+            border-radius: 14px;
+            background: var(--navy);
+            color: white;
+        }
+
+        .about-visual .big-mark {
+            color: #c4d2e4;
+            font-size: 78px;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .about-visual h3 {
+            margin-top: 14px;
+            font-size: 23px;
+        }
+
+        .about-visual p {
+            margin-top: 9px;
+            color: #c2ccda;
+            font-size: 13px;
+        }
+
+        .about-content h2 {
+            margin: 12px 0 17px;
+            color: var(--navy);
+            font-size: clamp(28px, 4vw, 38px);
+            line-height: 1.25;
+        }
+
+        .about-content > p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .benefits {
+            display: grid;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .benefit {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .check {
+            width: 23px;
+            height: 23px;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: #e2eee8;
+            color: #23704c;
+            font-size: 12px;
+        }
+
+        /* =================================
+           7. WORK PROCESS
+        ================================= */
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .process-step {
+            padding: 20px 0;
+        }
+
+        .step-number {
+            color: #b7c5d8;
+            font-size: 32px;
+            font-weight: 800;
+        }
+
+        .process-step h3 {
+            margin: 10px 0;
+            color: var(--navy);
+            font-size: 16px;
+        }
+
+        .process-step p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* =================================
+           8. CTA
+        ================================= */
+
+        .cta {
+            padding: 0 0 90px;
+        }
+
+        .cta-panel {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            padding: 43px;
+            border-radius: 13px;
+            background: linear-gradient(120deg, var(--navy), #223e64);
+            color: white;
+        }
+
+        .cta-panel h2 {
+            font-size: clamp(25px, 4vw, 34px);
+            line-height: 1.3;
+        }
+
+        .cta-panel p {
+            margin-top: 10px;
+            color: #d0d9e7;
+            font-size: 13px;
+        }
+
+        .cta-panel .btn {
+            flex-shrink: 0;
+            background: white;
+            color: var(--navy);
+        }
+
+        .cta-panel .btn:hover {
+            background: var(--silver);
+        }
+
+        /* =================================
+           9. FOOTER
+        ================================= */
+
+        .footer {
+            padding: 52px 0 20px;
+            background: #0c192d;
+            color: white;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 45px;
+            padding-bottom: 40px;
+        }
+
+        .footer .brand-name {
+            color: white;
+        }
+
+        .footer .brand-name small {
+            color: #9eacc0;
+        }
+
+        .footer-description {
+            max-width: 340px;
+            margin-top: 18px;
+            color: #aebbd0;
+            font-size: 13px;
+        }
+
+        .footer h3 {
+            margin-bottom: 17px;
+            font-size: 13px;
+        }
+
+        .footer-links {
+            display: grid;
+            gap: 11px;
+        }
+
+        .footer-links a {
+            width: fit-content;
+            color: #aebbd0;
+            font-size: 12px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding-top: 20px;
+            border-top: 1px solid #293950;
+            color: #9eacc0;
+            font-size: 11px;
+        }
+
+        /* =================================
+           10. RESPONSIVE DESIGN
+        ================================= */
+
+        @media (max-width: 950px) {
+            .nav-links {
+                gap: 15px;
+            }
+
+            .hero-grid {
+                gap: 25px;
+            }
+
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid {
+                gap: 35px;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .nav-inner {
+                min-height: 70px;
+                flex-wrap: wrap;
+                padding: 12px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                order: 4;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 8px 0;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 12px 4px;
+                border-top: 1px solid var(--border);
+            }
+
+            .nav-actions {
+                margin-left: auto;
+            }
+
+            .user-name {
+                display: none;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                padding-top: 65px;
+            }
+
+            .hero-art {
+                min-height: 330px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-visual {
+                min-height: 260px;
+            }
+
+            .cta-panel {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 30px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid > div:first-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 91%;
+            }
+
+            .brand-name {
+                font-size: 13px;
+            }
+
+            .brand-mark {
+                width: 38px;
+                height: 38px;
+            }
+
+            .logout-btn {
+                padding: 8px;
+            }
+
+            .hero h1 {
+                font-size: 39px;
+                letter-spacing: -1px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+            }
+
+            .hero-art {
+                min-height: 300px;
+            }
+
+            .art-circle {
+                width: 260px;
+                height: 260px;
+            }
+
+            .art-card {
+                width: 290px;
+                padding: 22px;
+            }
+
+            .tag-one {
+                right: -3px;
+            }
+
+            .tag-two {
+                left: -3px;
+            }
+
+            .section {
+                padding: 65px 0;
+            }
+
+            .service-grid,
+            .process-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid > div:first-child {
+                grid-column: auto;
+            }
+
+            .service-card p {
+                min-height: auto;
+            }
+
+            .trust-inner {
+                justify-content: flex-start;
+            }
+
+            .trust-label {
+                width: 100%;
+            }
+
+            .cta {
+                padding-bottom: 65px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =================================
+         NAVIGATION
+    ================================== -->
+
+    <header class="navbar">
+        <div class="container nav-inner">
+
+            <a href="#home" class="brand" aria-label="AR Technologies home">
+                <div class="brand-mark">A</div>
+
+                <div class="brand-name">
+                    AR TECHNOLOGIES
+                    <small>SOFTWARE & DIGITAL SOLUTIONS</small>
+                </div>
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                type="button"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+                aria-controls="navLinks"
+            >
+                ☰
+            </button>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#about">About Us</a>
+                <a href="#process">Our Process</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <span class="user-name" id="navUsername"></span>
+
+                <button class="logout-btn" id="logoutBtn" type="button">
+                    Sign Out ↗
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- =================================
+             HERO
+        ================================== -->
+
+        <section class="hero" id="home">
+            <div class="container hero-grid">
+
+                <div class="hero-content">
+
+                    <div class="welcome-badge">
+                        <span class="status-dot"></span>
+                        YOUR DIGITAL JOURNEY STARTS HERE
+                    </div>
+
+                    <h1>
+                        Welcome,
+                        <span id="welcomeName">Valued Client</span>.
+                        <br>
+                        Let's Build Something Great.
+                    </h1>
+
+                    <p class="hero-description">
+                        Welcome to AR Technologies — your partner for
+                        professional websites, custom software, and
+                        practical digital solutions designed to help
+                        businesses move forward.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#services" class="btn btn-primary">
+                            Explore Our Services →
+                        </a>
+
+                        <a href="#contact" class="btn btn-outline">
+                            Start a Project
+                        </a>
+                    </div>
+
+                    <p class="hero-note">
+                        Thoughtful design. Reliable development.
+                        Solutions built around your goals.
+                    </p>
+
+                </div>
+
+
+                <div class="hero-art" aria-label="Digital solutions illustration">
+
+                    <div class="art-circle"></div>
+
+                    <div class="floating-tag tag-one">
+                        WEB DEVELOPMENT
+                    </div>
+
+                    <div class="art-card">
+
+                        <div class="art-card-top">
+                            <strong>AR Digital Studio</strong>
+
+                            <div class="art-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+
+                        <div class="art-icon">AR</div>
+
+                        <h3>Ideas Into Reality.</h3>
+
+                        <p>
+                            Websites, software and digital experiences
+                            created for your business.
+                        </p>
+
+                        <div class="code-lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                    </div>
+
+                    <div class="floating-tag tag-two">
+                        CUSTOM SOFTWARE
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =================================
+             EXPERTISE STRIP
+        ================================== -->
+
+        <section class="trust-strip">
+            <div class="container trust-inner">
+
+                <div class="trust-label">Our areas of expertise</div>
+
+                <div class="trust-item">Web Development</div>
+                <div class="trust-item">Custom Software</div>
+                <div class="trust-item">UI / UX Design</div>
+                <div class="trust-item">Business Solutions</div>
+
+            </div>
+        </section>
+
+
+        <!-- =================================
+             SERVICES
+        ================================== -->
+
+        <section class="section services" id="services">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">What We Do</span>
+
+                    <h2>Technology That Works for Your Business</h2>
+
+                    <p>
+                        From your first business website to custom
+                        applications, we help turn your requirements
+                        into practical digital products.
+                    </p>
+                </div>
+
+                <div class="service-grid">
+
+                    <article class="service-card">
+                        <div class="service-icon">01</div>
+
+                        <h3>Website Development</h3>
+
+                        <p>
+                            Responsive, modern websites built with
+                            HTML, CSS, JavaScript and suitable web
+                            technologies for your business.
+                        </p>
+
+                        <a href="#contact" class="service-link">
+                            Discuss Your Website →
+                        </a>
+                    </article>
+
+
+                    <article class="service-card">
+                        <div class="service-icon">02</div>
+
+                        <h3>Custom Software</h3>
+
+                        <p>
+                            Business-focused applications, data
+                            management tools and tailored software
+                            workflows based on your requirements.
+                        </p>
+
+                        <a href="#contact" class="service-link">
+                            Discuss Your Project →
+                        </a>
+                    </article>
+
+
+                    <article class="service-card">
+                        <div class="service-icon">03</div>
+
+                        <h3>UI / UX Design</h3>
+
+                        <p>
+                            Clean interfaces, intuitive layouts and
+                            user-friendly digital experiences designed
+                            around real customer needs.
+                        </p>
+
+                        <a href="#contact" class="service-link">
+                            Improve Your Design →
+                        </a>
+                    </article>
+
+
+                    <article class="service-card">
+                        <div class="service-icon">04</div>
+
+                        <h3>Web Applications</h3>
+
+                        <p>
+                            Interactive browser-based applications
+                            with forms, dashboards and appropriate
+                            database integration.
+                        </p>
+
+                        <a href="#contact" class="service-link">
+                            Build an Application →
+                        </a>
+                    </article>
+
+
+                    <article class="service-card">
+                        <div class="service-icon">05</div>
+
+                        <h3>Business Digitalization</h3>
+
+                        <p>
+                            Help modernize everyday business processes
+                            with digital forms, information systems
+                            and practical online tools.
+                        </p>
+
+                        <a href="#contact" class="service-link">
+                            Modernize Your Business →
+                        </a>
+                    </article>
+
+
+                    <article class="service-card">
+                        <div class="service-icon">06</div>
+
+                        <h3>Website Maintenance</h3>
+
+                        <p>
+                            Content updates, interface improvements,
+                            bug fixes and ongoing website support
+                            according to an agreed scope.
+                        </p>
+
+                        <a href="#contact" class="service-link">
+                            Get Website Support →
+                        </a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =================================
+             ABOUT
+        ================================== -->
+
+        <section class="section about" id="about">
+            <div class="container about-grid">
+
+                <div class="about-visual">
+                    <div class="big-mark">AR.</div>
+
+                    <h3>Built Around Your Vision.</h3>
+
+                    <p>
+                        Practical technology. Clear communication.
+                        A focus on your business objectives.
+                    </p>
+                </div>
+
+
+                <div class="about-content">
+
+                    <span class="eyebrow">About AR Technologies</span>
+
+                    <h2>Your Ideas Deserve the Right Technology.</h2>
+
+                    <p>
+                        AR Technologies is a software and web development
+                        brand focused on creating useful, professional
+                        digital solutions. Our goal is to understand
+                        your needs and turn them into clear, functional
+                        and maintainable products.
+                    </p>
+
+                    <div class="benefits">
+
+                        <div class="benefit">
+                            <span class="check">✓</span>
+                            <span>Responsive design for mobile, tablet and desktop</span>
+                        </div>
+
+                        <div class="benefit">
+                            <span class="check">✓</span>
+                            <span>Solutions aligned with your project requirements</span>
+                        </div>
+
+                        <div class="benefit">
+                            <span class="check">✓</span>
+                            <span>Clear project scope and communication</span>
+                        </div>
+
+                        <div class="benefit">
+                            <span class="check">✓</span>
+                            <span>Maintainable code and practical functionality</span>
+                        </div>
+
+                    </div>
+
+                    <a href="#contact" class="btn btn-primary">
+                        Let's Talk About Your Project →
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =================================
+             WORK PROCESS
+        ================================== -->
+
+        <section class="section" id="process">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">How We Work</span>
+
+                    <h2>A Clear Process From Start to Finish</h2>
+
+                    <p>
+                        A straightforward approach helps keep
+                        projects organized, transparent and focused.
+                    </p>
+                </div>
+
+                <div class="process-grid">
+
+                    <article class="process-step">
+                        <div class="step-number">01</div>
+
+                        <h3>Discover</h3>
+
+                        <p>
+                            We discuss your goals, requirements,
+                            audience and expected outcomes.
+                        </p>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="step-number">02</div>
+
+                        <h3>Plan & Design</h3>
+
+                        <p>
+                            We establish the scope, structure,
+                            interface and implementation plan.
+                        </p>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="step-number">03</div>
+
+                        <h3>Develop & Test</h3>
+
+                        <p>
+                            We build the agreed solution and test
+                            its important features and responsiveness.
+                        </p>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="step-number">04</div>
+
+                        <h3>Deliver</h3>
+
+                        <p>
+                            We prepare the agreed deliverables
+                            and discuss the next steps for support.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =================================
+             CONTACT CALL TO ACTION
+        ================================== -->
+
+        <section class="cta" id="contact">
+            <div class="container">
+
+                <div class="cta-panel">
+
+                    <div>
+                        <h2>Have a Project in Mind?</h2>
+
+                        <p>
+                            Tell us what you want to build.
+                            Let's discuss the right solution for you.
+                        </p>
+                    </div>
+
+                    <!-- Replace with your real business email -->
+                    <a
+                        href="mailto:YOUR_EMAIL@example.com?subject=Project%20Inquiry%20-%20AR%20Technologies"
+                        class="btn"
+                        id="contactEmail"
+                    >
+                        Contact Our Team →
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- =================================
+         FOOTER
+    ================================== -->
+
+    <footer class="footer">
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div>
+                    <a href="#home" class="brand">
+                        <div class="brand-mark">A</div>
+
+                        <div class="brand-name">
+                            AR TECHNOLOGIES
+                            <small>SOFTWARE & DIGITAL SOLUTIONS</small>
+                        </div>
+                    </a>
+
+                    <p class="footer-description">
+                        Building practical digital experiences
+                        through web development, custom software
+                        and thoughtful design.
+                    </p>
+                </div>
+
+
+                <div>
+                    <h3>Quick Links</h3>
+
+                    <div class="footer-links">
+                        <a href="#home">Home</a>
+                        <a href="#services">Our Services</a>
+                        <a href="#about">About Us</a>
+                        <a href="#process">Our Process</a>
+                    </div>
+                </div>
+
+
+                <div>
+                    <h3>Our Services</h3>
+
+                    <div class="footer-links">
+                        <a href="#services">Website Development</a>
+                        <a href="#services">Custom Software</a>
+                        <a href="#services">UI / UX Design</a>
+                        <a href="#services">Business Solutions</a>
+                        <a href="#contact">Contact Us</a>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © <span id="currentYear"></span>
+                    AR Technologies. All rights reserved.
+                </span>
+
+                <a href="#home">Back to top ↑</a>
+
+            </div>
+
+        </div>
+    </footer>
+
+
+    <!-- =================================
+         JAVASCRIPT
+    ================================== -->
+
+    <script>
+        "use strict";
+
+        // 1. Check the signed-in user from the existing login system.
+        const savedEmail =
+            sessionStorage.getItem("classicCurrentUser") ||
+            localStorage.getItem("classicCurrentUser");
+
+        let users = [];
+
+        try {
+            users = JSON.parse(
+                localStorage.getItem("classicUsers") || "[]"
+            );
+        } catch (error) {
+            users = [];
+        }
+
+        const currentUser = Array.isArray(users)
+            ? users.find(user => user.email === savedEmail)
+            : null;
+
+        // 2. Protect this page from users who have not signed in.
+        if (!currentUser) {
+            window.location.replace("index.html");
+        } else {
+            // Use textContent to safely display the registered name.
+            document.getElementById("welcomeName").textContent =
+                currentUser.name;
+
+            document.getElementById("navUsername").textContent =
+                "Welcome, " + currentUser.name;
+        }
+
+        // 3. Sign out.
+        document.getElementById("logoutBtn").addEventListener(
+            "click",
+            function () {
+                sessionStorage.removeItem("classicCurrentUser");
+                localStorage.removeItem("classicCurrentUser");
+
+                window.location.replace("index.html");
+            }
+        );
+
+        // 4. Mobile navigation.
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", function () {
+            const isOpen = navLinks.classList.toggle("open");
+
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+        });
+
+        // Close the mobile menu after selecting a link.
+        navLinks.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("open");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.textContent = "☰";
+            });
+        });
+
+        // 5. Automatic copyright year.
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+    </script>
+
+</body>
+</html>

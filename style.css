@@ -1,0 +1,265 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --navy: #142b4a;
+    --blue: #2457a7;
+    --light: #f4f6fa;
+    --border: #dce2eb;
+    --text: #202b3c;
+    --muted: #788397;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: var(--light);
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+}
+
+.auth-container {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    width: min(900px, 100%);
+    min-height: 550px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 50px #182b4812;
+}
+
+.brand-panel {
+    background: var(--navy);
+    color: white;
+    padding: 48px 38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.brand-logo {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #ffffff75;
+    border-radius: 10px;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 32px;
+}
+
+.brand-panel h1 {
+    font-size: 30px;
+    line-height: 1.3;
+    margin-bottom: 14px;
+}
+
+.brand-panel p {
+    color: #d1dbea;
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+.brand-footer {
+    margin-top: 70px;
+    font-size: 11px;
+    color: #c3cfe0;
+}
+
+.form-panel {
+    padding: 48px 42px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-header h2 {
+    font-size: 28px;
+    margin-bottom: 9px;
+}
+
+.form-header p,
+.switch-text {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #f0f3f8;
+    padding: 4px;
+    border-radius: 7px;
+    margin: 26px 0;
+}
+
+.tab {
+    border: none;
+    padding: 11px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #68758a;
+    background: transparent;
+    font-weight: 600;
+}
+
+.tab.active {
+    color: var(--navy);
+    background: white;
+    box-shadow: 0 1px 4px #00000010;
+}
+
+.field {
+    margin-bottom: 19px;
+}
+
+.field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.field input {
+    width: 100%;
+    height: 45px;
+    padding: 0 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+    color: var(--text);
+    background: white;
+}
+
+.field input:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px #2457a710;
+}
+
+.password-box {
+    position: relative;
+}
+
+.password-box input {
+    padding-right: 58px;
+}
+
+.show-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--blue);
+    font-size: 12px;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin: 2px 0 22px;
+    font-size: 12px;
+}
+
+.remember {
+    display: flex;
+    gap: 7px;
+    align-items: center;
+}
+
+.text-button {
+    border: none;
+    background: none;
+    color: var(--blue);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    background: var(--navy);
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.submit-btn:hover {
+    background: var(--blue);
+}
+
+.message {
+    margin-top: 14px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.message.error {
+    color: #c0392b;
+}
+
+.message.success {
+    color: #18794e;
+}
+
+.switch-text {
+    text-align: center;
+    margin-top: 24px;
+}
+
+.switch-text .text-button {
+    font-size: 13px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 650px) {
+    body {
+        padding: 14px;
+    }
+
+    .auth-container {
+        grid-template-columns: 1fr;
+    }
+
+    .brand-panel {
+        padding: 24px;
+    }
+
+    .brand-logo {
+        margin-bottom: 16px;
+    }
+
+    .brand-panel h1 {
+        font-size: 24px;
+    }
+
+    .brand-footer {
+        margin-top: 22px;
+    }
+
+    .form-panel {
+        padding: 30px 24px;
+    }
+}

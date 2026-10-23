@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classic Auth | Sign In</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="auth-container">
+
+        <section class="brand-panel">
+            <div class="brand-logo">A</div>
+
+            <h1>Welcome to Classic</h1>
+
+            <p>
+                A simple, secure and professional place to get started.
+            </p>
+
+            <div class="brand-footer">
+                © 2026 Classic. All rights reserved.
+            </div>
+        </section>
+
+        <section class="form-panel">
+
+            <div class="form-header">
+                <h2 id="formTitle">Sign in</h2>
+
+                <p id="formSubtitle">
+                    Enter your details to access your account.
+                </p>
+            </div>
+
+            <div class="tabs">
+                <button id="loginTab" class="tab active" type="button">
+                    Sign In
+                </button>
+
+                <button id="signupTab" class="tab" type="button">
+                    Sign Up
+                </button>
+            </div>
+
+            <form id="authForm">
+
+                <!-- Full Name -->
+                <div class="field" id="nameField" hidden>
+                    <label for="name">Full name</label>
+
+                    <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        placeholder="Your full name"
+                        autocomplete="name"
+                    >
+                </div>
+
+                <!-- Email -->
+                <div class="field">
+                    <label for="email">Email address</label>
+
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <!-- Password -->
+                <div class="field">
+                    <label for="password">Password</label>
+
+                    <div class="password-box">
+                        <input
+                            id="password"
+                            name="password"
+                            type="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            minlength="6"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            id="togglePassword"
+                            class="show-password"
+                        >
+                            Show
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Remember Me and Forgot Password -->
+                <div class="form-options" id="loginOptions">
+
+                    <label class="remember">
+                        <input type="checkbox" id="remember">
+                        Remember me
+                    </label>
+
+                    <button
+                        type="button"
+                        id="forgotPassword"
+                        class="text-button"
+                    >
+                        Forgot password?
+                    </button>
+
+                </div>
+
+                <!-- Submit -->
+                <button
+                    type="submit"
+                    class="submit-btn"
+                    id="submitBtn"
+                >
+                    Sign In
+                </button>
+
+                <!-- Success and Error Messages -->
+                <p
+                    id="message"
+                    class="message"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+            </form>
+
+            <!-- Switch Sign In / Sign Up -->
+            <p class="switch-text">
+
+                <span id="switchText">
+                    Don't have an account?
+                </span>
+
+                <button
+                    id="switchMode"
+                    class="text-button"
+                    type="button"
+                >
+                    Sign up
+                </button>
+
+            </p>
+
+        </section>
+
+    </main>
+
+<script type="module" src="./script.js"></script>
+</body>
+</html>
